@@ -62,7 +62,7 @@ int drop_db(char *name);
  * @param num_columns - the number of columns
  * @return 0 if successful, -1 if not
  */
-int create_column(char *name, char *data_type, int data_size);
+int create_column(char *db_name, char *name, char *data_type, int data_size);
 
 /*
  * Function to drop a table.
