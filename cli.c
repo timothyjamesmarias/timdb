@@ -1,12 +1,19 @@
 #include "cli.h"
-#include "stdio.h"
+#include <string.h>
+#include <stdio.h>
+#include <stdbool.h>
 
-void get_input() {
+void get_input(){
     printf(">> ");
-    scanf("%s", input);
+    fflush(stdout);
+    fgets(input, sizeof input, stdin);
+    input[strcspn(input, "\n")] = '\0';
+    if (strcmp(input, "quit") == 0)
+        Q_FLAG = false;
 }
 
-int main(int argc, char *argv[]) {
-
+int main() {
+    while (Q_FLAG)
+        get_input();
+    return 0;
 }
-

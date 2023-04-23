@@ -1,4 +1,4 @@
-#inlcude "db.h"
+#include "db.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,11 +6,23 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <unistd.h>
-#include <boolean.h>
+#include <stdbool.h>
+
+char * get_file_name(FILE * fp) {
+    int fd = fileno(fp); // get the file descriptor
+    char path[255]; // path to the file
+    char *filename = malloc(255); // filename
+    sprintf(path, "/proc/self/fd/%d", fd); // get the path to the file
+    ssize_t len = readlink(path, filename, 255); // read the link
+    if (len < 0) // check if the link was read successfully
+        return NULL;
+    filename[len] = '\0'; // add the null terminator
+    return filename; // return the filename
+} 
 
 int is_present_in_file(FILE * fp, char *string) {
     if (fp == NULL) {
-        fprintf(stderr, "Could not open file %s\n", file_name);
+        fprintf(stderr, "Could not open file");
         return -1;
     }
     else {
@@ -48,28 +60,28 @@ int drop_db(char *db_name) {
     }
 }
 
-
-int create_table(char *db_name, char *table_name) {
+int create_table(char *table_name) {
     if (access(table_name, F_OK) == 0){ // check if the table exists
         fprintf(stderr, "Table %s already exists\n", table_name);
         return -1;
     }
     else {
-        FILE *fp = fopen(table_name, "w"); // create the table file
-        if (fp == NULL) {
+        FILE *table_fp = fopen(table_name, "w"); // create the table file
+        if (table_fp == NULL) {
             fprintf(stderr, "Could not create table %s\n", table_name);
+            fclose(table_fp);
             return -1;
         }
         else {
             printf("Table %s created successfully\n", table_name);
-            fclose (table_fp);
+            fclose(table_fp);
             return 0;
         }
     }
             
 }
 
-int drop_table(char *db_name, char *table_name){
+int drop_table(char *table_name){
     int status = remove(table_name);
     if (status == 0) {
         printf("Table %s dropped successfully\n", table_name);
@@ -105,7 +117,7 @@ int create_column(char *table_name, char *column_name, char *data_type){
     }
 }
 
-int drop_column(char *db_name, char *table_name, char *column_name) {
+int drop_column(char *table_name, char *column_name) {
 
     if (access(table_name, F_OK) != 0){ // check if the table exists
         fprintf(stderr, "Table %s does not exist", table_name);
@@ -141,7 +153,7 @@ int drop_column(char *db_name, char *table_name, char *column_name) {
                 if (feof(table_fp)){
                     keep_reading = false;
                 }
-                else if (current_line != delete_line) { // if the current line is not the line to be deleted
+                else if (curr_line != delete_line) { // if the current line is not the line to be deleted
                     fprintf(temp_fp, "%s", line); // write the line to the temp file
                 }
                 curr_line++;
@@ -159,12 +171,12 @@ int drop_column(char *db_name, char *table_name, char *column_name) {
     }
 }
 
-int insert_row(char *db_name, char *table_name, char *data) {
+/* int insert_row(char *table_name, char *data) { */
 
-}
+/* } */
 
-int delete_row(char *db_name, char *table_name, char *number);
-int update_row(char *db_name, char *table_name, char *number, char *data);
+/* int delete_row(char *table_name, char *number); */
+/* int update_row(char *table_name, char *number, char *data); */
 
 
 
