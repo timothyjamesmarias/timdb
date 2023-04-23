@@ -132,6 +132,7 @@ int drop_column(char *db_name, char *table_name, char *column_name) {
             fprintf(stderr, "Column %s does not exist\n", column_name);
             fclose (table_fp);
             fclose (temp_fp);
+            free(temp_name);
             return -1;
         }
         else {
@@ -151,6 +152,7 @@ int drop_column(char *db_name, char *table_name, char *column_name) {
 
             remove(table_name); // delete the table file
             rename(temp_name, table_name); // rename the temp file to the table file
+            free(temp_name);
 
             return 0;
         }
