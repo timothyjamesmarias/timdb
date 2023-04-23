@@ -1,6 +1,8 @@
 #ifndef DB_H_
 #define DB_H_
 
+#define MAX_LINE_LENGTH 100
+
 /* 
  * Column struct to hold the name of the column and the data type
  * of the column. 
