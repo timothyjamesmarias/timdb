@@ -8,12 +8,6 @@
 #include <unistd.h>
 #include <boolean.h>
 
-/*
- * This function checks if a string is present in a file
- * @param fp: file pointer
- * @param string: string to be searched
- * @return 1 if string is present, 0 if string is not present, -1 if error
- */
 int is_present_in_file(FILE * fp, char *string) {
     if (fp == NULL) {
         fprintf(stderr, "Could not open file %s\n", file_name);
