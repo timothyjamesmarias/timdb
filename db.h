@@ -1,6 +1,5 @@
 #ifndef DB_H_
 #define DB_H_
-#include <string.h>
 
 /* 
  * Column struct to hold the name of the column and the data type
@@ -41,56 +40,18 @@ struct db {
   int num_tables;
 };
 
-/* 
- * Function to create a new database.
- * @param name - the name of the database
- * @return 0 if successful, -1 if not
- */
-int create_db(char *name);
+int create_db(char *db_name);
+int drop_db(char *db_name);
 
-/* 
- * Function to drop a database.
- * @param name - the name of the database
- * @return 0 if successful, -1 if not
- */
-int drop_db(char *name);
+int create_table(char *db_name, char *table_name, char *columns);
+int drop_table(char *db_name, char *table_name);
 
-/*
- * Function to create a new table.
- * @param name - the name of the table
- * @param columns - the columns of the table
- * @param num_columns - the number of columns
- * @return 0 if successful, -1 if not
- */
-int create_column(char *db_name, char *name, char *data_type, int data_size);
+int create_column(char *db_name, char *table_name, char *column_name, char *data_type);
+int drop_column(char *db_name, char *table_name, char *column_name);
 
-/*
- * Function to drop a table.
- * @param name - the name of the table
- * @return 0 if successful, -1 if not
- */
-int delete_column(char *name);
-
-/*
- * Function to create a new row.
- * @param data - the data of the row
- * @param data_size - the size of the data
- * @return 0 if successful, -1 if not
- */
-int create_row(char *data, int data_size);
-
-/*
- * Function to drop a row.
- * @param data - the data of the row
- * @return 0 if successful, -1 if not
- */
-int delete_row(char *data, int data_size);
-
-/*
- * Function to drop a row.
- * @param data - the data of the row
- * @return 0 if successful, -1 if not
- */
-int create_table(char *name, struct column *columns, int num_columns);
+int insert_row(char *db_name, char *table_name, char *data);
+int delete_row(char *db_name, char *table_name, char *number);
+int update_row(char *db_name, char *table_name, char *number, char *data);
 
 #endif
+
