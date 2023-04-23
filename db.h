@@ -4,46 +4,6 @@
 
 #define MAX_LINE_LENGTH 100
 
-
-/* 
- * Column struct to hold the name of the column and the data type
- * of the column. 
- */
-struct column {
-    char * name;
-    char * data_type;
-    int data_size;
-};
-
-/* 
- * Row struct to hold the data of the row and the size of the data.
- */
-struct row {
-    char * number;
-    char * data;
-    int data_size;
-};
-
-/* 
- * Table struct to hold the name of the table, the columns of the table,
- * the number of columns, the rows of the table, and the number of rows.
- */
-struct table {
-    char * name;
-    struct column *columns;
-    int num_columns;
-    struct row *rows;
-    int num_rows;
-};
-
-/* 
- * Database struct to hold the tables of the database and the number of tables.
- */
-struct db {
-  struct table *tables;
-  int num_tables;
-};
-
 /*
  * This function gets the file name from a file pointer
  * @param fp: file pointer

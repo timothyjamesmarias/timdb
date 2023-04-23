@@ -171,13 +171,6 @@ int drop_column(char *table_name, char *column_name) {
     }
 }
 
-/* int insert_row(char *table_name, char *data) { */
-
-/* } */
-
-/* int delete_row(char *table_name, char *number); */
-/* int update_row(char *table_name, char *number, char *data); */
-
 
 
 
