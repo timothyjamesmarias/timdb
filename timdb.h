@@ -3,13 +3,16 @@
 #include <stdbool.h>
 
 #define MAX_INPUT_LENGTH 2048
-#define MAX_COMMAND_NUMBER 10
-#define MAX_COMMAND_LENGTH 20
+#define MAX_ARGS 512
 
 char input[MAX_INPUT_LENGTH];
-char commands[10][20];
+char * cmds[MAX_ARGS];
 bool Q_FLAG = true;
 
-void get_user_input();
+void get_input();
+
+void parse_cmds();
+
+void exec_cmds();
 
 #endif
