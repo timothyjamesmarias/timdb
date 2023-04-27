@@ -171,6 +171,3 @@ int drop_column(char *table_name, char *column_name) {
     }
 }
 
-
-
-

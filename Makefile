@@ -1,8 +1,5 @@
-db: cli.o 
-	gcc cli.o -o db
-
-cli.o: cli.c cli.h db.c db.h
-	gcc -ggdb -Wall -std=gnu99 -Wextra -pedantic db.c cli.c -c
+timdb: 
+	gcc -ggdb -Wall -std=gnu99 -Wextra -pedantic timdb.c db.c -o timdb
 
 clean:
-	rm *.o db
+	rm *.o timdb

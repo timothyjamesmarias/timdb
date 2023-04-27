@@ -1,5 +1,5 @@
-#ifndef CLI_H_
-#define CLI_H_
+#ifndef TIMDB_H_
+#define TIMDB_H_
 #include <stdbool.h>
 
 #define MAX_INPUT_LENGTH 2048
@@ -10,6 +10,6 @@ char input[MAX_INPUT_LENGTH];
 char commands[10][20];
 bool Q_FLAG = true;
 
-void get_input();
+void get_user_input();
 
 #endif
