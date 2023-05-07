@@ -5,11 +5,10 @@
 #define MAX_INPUT_LENGTH 2048
 #define MAX_ARGS 512
 
-const char ** cmds = ["SHOW", "CREATE", "DELETE", "UPDATE", "INSERT"];
-const char ** predicates = ["INTO", "FROM", "WHERE", "VALUES", "SET", "ALL"];
-const char ** objects = ["DATABASE", "TABLE", "ROW", "COLUMN"];
-const char ** types = ["INT", "FLOAT", "STRING", "TEXT", "BOOL"];
-const char * variable = "X";
+const char ** sql_cmds = ["SHOW", "CREATE", "DELETE", "UPDATE", "INSERT"];
+const char ** sql_predicates = ["INTO", "FROM", "WHERE", "VALUES", "SET", "ALL"];
+const char ** sql_objects = ["DATABASE", "TABLE", "ROW", "COLUMN"];
+const char ** sql_types = ["INT", "FLOAT", "STRING", "TEXT", "BOOL"];
 
 char input[MAX_INPUT_LENGTH];
 char * cmds[MAX_ARGS];
